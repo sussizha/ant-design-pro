@@ -20,6 +20,12 @@ const menuData = [
         // hideInBreadcrumb: true,
         // hideInMenu: true,
       },
+      {
+        name: '试验田',
+        path: 'Trial-1',
+        // hideInBreadcrumb: true,
+        // hideInMenu: true,
+      },
     ],
   },
   {
