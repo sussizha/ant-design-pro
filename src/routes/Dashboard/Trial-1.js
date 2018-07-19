@@ -1,11 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { PureComponent } from 'react';
 import moment from 'moment';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
-import { Row, Col, Card, List, Avatar } from 'antd';
+import { Row, Card, List, Avatar, Button } from 'antd';
 
 import { Radar } from 'components/Charts';
-import EditableLinkGroup from 'components/EditableLinkGroup';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 
 import styles from './Trial-1.less';
@@ -136,12 +135,12 @@ export default class Workplace extends PureComponent {
   }
 
   render() {
-    const {
-      project: { notice },
-      projectLoading,
-      activitiesLoading,
-      chart: { radarData },
-    } = this.props;
+    // const {
+    //   project: { notice },
+    //   projectLoading,
+    //   activitiesLoading,
+    //   chart: { radarData },
+    // } = this.props;
 
     const pageHeaderContent = (
       <div className={styles.pageHeaderContent}>
@@ -162,7 +161,7 @@ export default class Workplace extends PureComponent {
       <div className={styles.extraContent}>
         <div className={styles.statItem}>
           <p>项目数</p>
-          <p>56</p>
+          <p>60</p>
         </div>
         <div className={styles.statItem}>
           <p>团队内排名</p>
@@ -180,87 +179,69 @@ export default class Workplace extends PureComponent {
 
     return (
       <PageHeaderLayout content={pageHeaderContent} extraContent={extraContent}>
+        {/* <Row gutter={24}> */}
+        {/* <Card */}
+        {/* className={styles.projectList} */}
+        {/* style={{ marginBottom: 24 }} */}
+        {/* title="进行中的项目" */}
+        {/* bordered={false} */}
+        {/* extra={<Link to="/">全部项目</Link>} */}
+        {/* loading={projectLoading} */}
+        {/* bodyStyle={{ padding: 0 }} */}
+        {/* cover={<img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />} */}
+        {/* > */}
+        {/* {notice.map(item => ( */}
+        {/* <Card.Grid className={styles.projectGrid} key={item.id}> */}
+        {/* <Card bodyStyle={{ padding: 0 }} bordered={false}> */}
+        {/* <Card.Meta */}
+        {/* title={ */}
+        {/* <div className={styles.cardTitle}> */}
+        {/* <Avatar size="small" src={item.logo} /> */}
+        {/* <Link to={item.href}>{item.title}</Link> */}
+        {/* </div> */}
+        {/* } */}
+        {/* description={item.description} */}
+        {/* /> */}
+        {/* <div className={styles.projectItemContent}> */}
+        {/* <Link to={item.memberLink}>{item.member || ''}</Link> */}
+        {/* {item.updatedAt && ( */}
+        {/* <span className={styles.datetime} title={item.updatedAt}> */}
+        {/* {moment(item.updatedAt).fromNow()} */}
+        {/* </span> */}
+        {/* )} */}
+        {/* </div> */}
+        {/* </Card> */}
+        {/* </Card.Grid> */}
+        {/* ))} */}
+        {/* </Card> */}
+        {/* </Row> */}
+        <Row>
+          <Button ghost>我是一个幽灵按钮-A</Button>
+          <Button shape="circle" size="large">
+            我是一个按钮-A
+          </Button>
+          <Button type="primary">我是一个按钮-A</Button>
+        </Row>
+        <Row>
+          <p />
+        </Row>
         <Row gutter={24}>
-          <Col xl={16} lg={24} md={24} sm={24} xs={24}>
-            <Card
-              className={styles.projectList}
-              style={{ marginBottom: 24 }}
-              title="进行中的项目"
-              bordered={false}
-              extra={<Link to="/">全部项目</Link>}
-              loading={projectLoading}
-              bodyStyle={{ padding: 0 }}
-            >
-              {notice.map(item => (
-                <Card.Grid className={styles.projectGrid} key={item.id}>
-                  <Card bodyStyle={{ padding: 0 }} bordered={false}>
-                    <Card.Meta
-                      title={
-                        <div className={styles.cardTitle}>
-                          <Avatar size="small" src={item.logo} />
-                          <Link to={item.href}>{item.title}</Link>
-                        </div>
-                      }
-                      description={item.description}
-                    />
-                    <div className={styles.projectItemContent}>
-                      <Link to={item.memberLink}>{item.member || ''}</Link>
-                      {item.updatedAt && (
-                        <span className={styles.datetime} title={item.updatedAt}>
-                          {moment(item.updatedAt).fromNow()}
-                        </span>
-                      )}
-                    </div>
-                  </Card>
-                </Card.Grid>
-              ))}
-            </Card>
-            <Card
-              bodyStyle={{ padding: 0 }}
-              bordered={false}
-              className={styles.activeCard}
-              title="动态"
-              loading={activitiesLoading}
-            >
-              <List loading={activitiesLoading} size="large">
-                <div className={styles.activitiesList}>{this.renderActivities()}</div>
-              </List>
-            </Card>
-          </Col>
-          <Col xl={8} lg={24} md={24} sm={24} xs={24}>
-            <Card
-              style={{ marginBottom: 24 }}
-              title="快速开始 / 便捷导航"
-              bordered={false}
-              bodyStyle={{ padding: 0 }}
-            >
-              <EditableLinkGroup onAdd={() => {}} links={links} linkElement={Link} />
-            </Card>
-            <Card
-              style={{ marginBottom: 24 }}
-              bordered={false}
-              title="XX 指数"
-              loading={radarData.length === 0}
-            >
-              <div className={styles.chart}>
-                <Radar hasLegend height={343} data={radarData} />
-              </div>
-            </Card>
-            <Card bodyStyle={{ paddingTop: 12, paddingBottom: 12 }} bordered={false} title="团队">
-              <div className={styles.members}>
-                <Row gutter={48}>
-                  {members.map(item => (
-                    <Col span={12} key={`members-item-${item.id}`}>
-                      <Link to={item.link}>
-                        <Avatar src={item.logo} size="small" />
-                        <span className={styles.member}>{item.title}</span>
-                      </Link>
-                    </Col>
-                  ))}
-                </Row>
-              </div>
-            </Card>
-          </Col>
+          <Card
+            title="Sussie_reverse"
+            bordered={false}
+            extra={<a href="http://www.baidu.com/">链接文本</a>}
+            cover={<img alt="" src={require('C:/Users/Public/Pictures/Sample Pictures/喵.jpg')} />}
+          >
+            <Card.Grid>
+              <Card.Meta description="第一个小网格" title="第一个小网格的标题" />
+            </Card.Grid>
+            <Card.Grid>
+              <Card.Meta description="第一个小网格" title="第一个小网格的标题" />
+            </Card.Grid>
+            <Card.Grid>
+              <Card.Meta description="第一个小网格" title="第一个小网格的标题" />
+            </Card.Grid>
+          </Card>
         </Row>
       </PageHeaderLayout>
     );
