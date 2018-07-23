@@ -93,6 +93,11 @@ export const getRouterData = app => {
         import('../routes/Dashboard/Trial-1')
       ),
     },
+    '/dashboard/Personalization': {
+      component: dynamicWrapper(app, ['project', 'activities', 'chart'], () =>
+        import('../routes/Dashboard/Personalization')
+      ),
+    },
     '/form/basic-form': {
       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),
     },

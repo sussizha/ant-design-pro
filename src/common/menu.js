@@ -23,8 +23,10 @@ const menuData = [
       {
         name: '试验田',
         path: 'Trial-1',
-        // hideInBreadcrumb: true,
-        // hideInMenu: true,
+      },
+      {
+        name: '自定义',
+        path: 'Personalization',
       },
     ],
   },
